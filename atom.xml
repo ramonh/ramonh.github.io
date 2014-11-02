@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Ramon Huidobro]]></title>
+  <link href="http://ramonh.github.io/atom.xml" rel="self"/>
+  <link href="http://ramonh.github.io/"/>
+  <updated>2014-11-02T12:03:22+01:00</updated>
+  <id>http://ramonh.github.io/</id>
+  <author>
+    <name><![CDATA[]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Starting Out With Homesick]]></title>
+    <link href="http://ramonh.github.io/blog/2014/11/02/starting-out-with-homesick/"/>
+    <updated>2014-11-02T11:44:48+01:00</updated>
+    <id>http://ramonh.github.io/blog/2014/11/02/starting-out-with-homesick</id>
+    <content type="html"><![CDATA[<h2>This is a test</h2>
+]]></content>
+  </entry>
+  
+</feed>
