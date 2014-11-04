@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Ramon Huidobro]]></title>
-  <link href="http://ramonh.github.io/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Nodejs | Ramon Huidobro]]></title>
+  <link href="http://ramonh.github.io/blog/categories/nodejs/atom.xml" rel="self"/>
   <link href="http://ramonh.github.io/"/>
   <updated>2014-11-04T18:44:08+01:00</updated>
   <id>http://ramonh.github.io/</id>
@@ -12,33 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Homesick App - Install Plugins in Android Studio]]></title>
-    <link href="http://ramonh.github.io/blog/2014/11/04/homesick-app-starting-the-android-client/"/>
-    <updated>2014-11-04T16:50:54+01:00</updated>
-    <id>http://ramonh.github.io/blog/2014/11/04/homesick-app-starting-the-android-client</id>
-    <content type="html"><![CDATA[<p>This is part of an ongoing series of posts about Homesick, <a href="http://ramonh.github.io/blog/2014/11/02/starting-out-with-homesick/">my bachelor project</a>.</p>
-
-<p>Perhaps prematurely, I’ve started first with the Android client of the Homesick project. </p>
-
-<p>The Android side of the client is hosted <a href="https://github.com/ramonh/homesick-app">here</a>.</p>
-
-<p>I’ll be using Android Studio to develop the client. This is also my first experience with an IntelliJ-like environment, so it should be very interesting!</p>
-
-<p>I was very happy to see I could install plugins. To do so, I did the following:</p>
-
-<ol>
-  <li>Open Preferences (On OS X, it’s in the “Android Studio” menu)</li>
-  <li>On the left side, under IDE Settings, select “plugins”</li>
-  <li>Click on “Install JetBrains plugins”</li>
-</ol>
-
-<p>One plugin I immediately downloaded was IdeaVim, which lets me use Vim keys in Android Studio.</p>
-
-<p>Once I’ve done that and set the Darcula theme with some tweaks, I was all set to start!</p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Starting Out With Homesick]]></title>
