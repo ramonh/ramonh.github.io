@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Nodejs | Ramon Huidobro]]></title>
   <link href="http://ramonh.github.io/blog/categories/nodejs/atom.xml" rel="self"/>
   <link href="http://ramonh.github.io/"/>
-  <updated>2014-11-04T18:44:08+01:00</updated>
+  <updated>2014-11-05T19:32:54+01:00</updated>
   <id>http://ramonh.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -18,22 +18,21 @@
     <link href="http://ramonh.github.io/blog/2014/11/02/starting-out-with-homesick/"/>
     <updated>2014-11-02T11:44:48+01:00</updated>
     <id>http://ramonh.github.io/blog/2014/11/02/starting-out-with-homesick</id>
-    <content type="html"><![CDATA[<p>My Bachelor project is called “Homesick App”, the description being as follows:</p>
+    <content type="html"><![CDATA[<p>My Bachelor project is called &ldquo;Homesick App&rdquo;, the description being as follows:</p>
 
-<blockquote>
-  <p>Develop a mobile app that exchange the sounds created by the city you live in with the sounds of your home city. Requires implementing a server for sound upload and categorization (to be done by the app automatically in the background, classification e.g. into “traffic”, “market”, etc.) and of a feature-based classification app that is able to understand the current sound environment and to replace it (over earphones) with cached sounds from the place that you chose on installing the app. An example: The app should help to make someone from Mumbai feel at home in Zurich. Requires good knowledge in audio signal processing.</p>
-</blockquote>
+<blockquote><p>Develop a mobile app that exchange the sounds created by the city you live in with the sounds of your home city. Requires implementing a server for sound upload and categorization (to be done by the app automatically in the background, classification e.g. into &ldquo;traffic&rdquo;, &ldquo;market&rdquo;, etc.) and of a feature-based classification app that is able to understand the current sound environment and to replace it (over earphones) with cached sounds from the place that you chose on installing the app. An example: The app should help to make someone from Mumbai feel at home in Zurich. Requires good knowledge in audio signal processing.</p></blockquote>
 
-<p>For my part, I’ll need to have a basic server that receives recorded sound from an Android client, also developed by me, classifies it by machine learning and then sends back an appropriate sound. Doesn’t have to be the equivalent.</p>
+<p>For my part, I&rsquo;ll need to have a basic server that receives recorded sound from an Android client, also developed by me, classifies it by machine learning and then sends back an appropriate sound. Doesn&rsquo;t have to be the equivalent.</p>
 
-<p>Over the next few blog posts, I’ll try to document how I develop the application.</p>
+<p>Over the next few blog posts, I&rsquo;ll try to document how I develop the application.</p>
 
 <p>Current plan is as follows:</p>
 
 <ul>
-  <li>Android client will be developed in <a href="https://developer.android.com/sdk/installing/studio.html">Android Studio</a> (trying it for the first time).</li>
-  <li>Server side code will be a <a href="http://nodejs.org/">Node.js</a> app.</li>
+<li>Android client will be developed in <a href="https://developer.android.com/sdk/installing/studio.html">Android Studio</a> (trying it for the first time).</li>
+<li>Server side code will be a <a href="http://nodejs.org/">Node.js</a> app.</li>
 </ul>
+
 ]]></content>
   </entry>
   
