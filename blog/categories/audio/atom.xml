@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Audio | Ramon Huidobro]]></title>
   <link href="http://ramonh.github.io/blog/categories/audio/atom.xml" rel="self"/>
   <link href="http://ramonh.github.io/"/>
-  <updated>2014-11-05T19:32:54+01:00</updated>
+  <updated>2014-11-07T10:11:24+01:00</updated>
   <id>http://ramonh.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,49 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Homesick App - Playing Stored Audio Data on Android]]></title>
+    <link href="http://ramonh.github.io/blog/2014/11/07/homesick-app-playing-stored-audio-data-on-android/"/>
+    <updated>2014-11-07T09:29:21+01:00</updated>
+    <id>http://ramonh.github.io/blog/2014/11/07/homesick-app-playing-stored-audio-data-on-android</id>
+    <content type="html"><![CDATA[<p>This is part of an ongoing series of posts about Homesick, <a href="/blog/2014/11/02/starting-out-with-homesick/">my bachelor project</a>.</p>
+
+<p>The Android side of the client is hosted <a href="https://github.com/ramonh/homesick-app">here</a>.</p>
+
+<p>Last post, I set up a button in my app to record and store audio. This time, I&rsquo;ve set up a play button that will play the audio I recorded.</p>
+
+<p>Once again, the official <a href="http://developer.android.com/guide/topics/media/audio-capture.html">API guides from Google</a> were very helpful.</p>
+
+<p>The code is very similar to that of recording audio, from last post:</p>
+
+<pre><code class="java RecordingActivity.java https://github.com/ramonh/homesick-app/blob/master/app/src/main/java/com/ramonh/homesick/RecordingActivity.java Source">    private void startPlaying() {
+        mPlayer = new MediaPlayer();
+        try {
+            mPlayer.setDataSource(mFileName);
+            mPlayer.prepare();
+            mPlayer.start();
+        } catch (IOException e) {
+            Log.e(LOG_TAG, "prepare() failed");
+        }
+    }
+</code></pre>
+
+<p>First, we instantiate an object of type android.media.MediaPlayer. This object will be in charge of playing audio we&rsquo;ve recorded. In the next line, its data source is set to the audio file at the path we recorded to. This means that the player will play this file.</p>
+
+<p>Finally, it&rsquo;s prepared to start playing and start() is called on it to start playing. Simple!</p>
+
+<p>Pressing the Play button again will stop:</p>
+
+<pre><code class="java RecordingActivity.java https://github.com/ramonh/homesick-app/blob/master/app/src/main/java/com/ramonh/homesick/RecordingActivity.java Source">    private void stopPlaying() {
+        mPlayer.release();
+        mPlayer = null;
+    }
+</code></pre>
+
+<p>That&rsquo;s it! Now I have a simple prototype that records and plays audio on Android.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Homesick App - Recording and Storing Audio on Android]]></title>

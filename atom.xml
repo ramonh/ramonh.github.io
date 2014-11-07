@@ -4,7 +4,7 @@
   <title><![CDATA[Ramon Huidobro]]></title>
   <link href="http://ramonh.github.io/atom.xml" rel="self"/>
   <link href="http://ramonh.github.io/"/>
-  <updated>2014-11-05T19:32:54+01:00</updated>
+  <updated>2014-11-07T10:11:24+01:00</updated>
   <id>http://ramonh.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,65 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Homesick App - Playing Stored Audio Data on Android]]></title>
+    <link href="http://ramonh.github.io/blog/2014/11/07/homesick-app-playing-stored-audio-data-on-android/"/>
+    <updated>2014-11-07T09:29:21+01:00</updated>
+    <id>http://ramonh.github.io/blog/2014/11/07/homesick-app-playing-stored-audio-data-on-android</id>
+    <content type="html"><![CDATA[<p>This is part of an ongoing series of posts about Homesick, <a href="http://ramonh.github.io/blog/2014/11/02/starting-out-with-homesick/">my bachelor project</a>.</p>
+
+<p>The Android side of the client is hosted <a href="https://github.com/ramonh/homesick-app">here</a>.</p>
+
+<p>Last post, I set up a button in my app to record and store audio. This time, I&rsquo;ve set up a play button that will play the audio I recorded.</p>
+
+<p>Once again, the official <a href="http://developer.android.com/guide/topics/media/audio-capture.html">API guides from Google</a> were very helpful.</p>
+
+<p>The code is very similar to that of recording audio, from last post:</p>
+
+<figure class='code'><figcaption><span>RecordingActivity.java</span><a href='https://github.com/ramonh/homesick-app/blob/master/app/src/main/java/com/ramonh/homesick/RecordingActivity.java'>Source</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">startPlaying</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">mPlayer</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">MediaPlayer</span><span class="o">();</span>
+</span><span class='line'>    <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">mPlayer</span><span class="o">.</span><span class="na">setDataSource</span><span class="o">(</span><span class="n">mFileName</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">mPlayer</span><span class="o">.</span><span class="na">prepare</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">mPlayer</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+</span><span class='line'>    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="n">LOG_TAG</span><span class="o">,</span> <span class="s">&quot;prepare() failed&quot;</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>First, we instantiate an object of type android.media.MediaPlayer. This object will be in charge of playing audio we&rsquo;ve recorded. In the next line, its data source is set to the audio file at the path we recorded to. This means that the player will play this file.</p>
+
+<p>Finally, it&rsquo;s prepared to start playing and start() is called on it to start playing. Simple!</p>
+
+<p>Pressing the Play button again will stop:</p>
+
+<figure class='code'><figcaption><span>RecordingActivity.java</span><a href='https://github.com/ramonh/homesick-app/blob/master/app/src/main/java/com/ramonh/homesick/RecordingActivity.java'>Source</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">stopPlaying</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">mPlayer</span><span class="o">.</span><span class="na">release</span><span class="o">();</span>
+</span><span class='line'>    <span class="n">mPlayer</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That&rsquo;s it! Now I have a simple prototype that records and plays audio on Android.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Homesick App - Recording and Storing Audio on Android]]></title>
