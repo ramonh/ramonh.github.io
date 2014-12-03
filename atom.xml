@@ -4,7 +4,7 @@
   <title><![CDATA[Ramon Huidobro]]></title>
   <link href="http://ramonh.github.io/atom.xml" rel="self"/>
   <link href="http://ramonh.github.io/"/>
-  <updated>2014-11-21T18:14:39+01:00</updated>
+  <updated>2014-12-03T14:38:06+01:00</updated>
   <id>http://ramonh.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,114 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Internationalization in RubyMotion Projects]]></title>
+    <link href="http://ramonh.github.io/blog/2014/12/03/scripting-is-awesome/"/>
+    <updated>2014-12-03T12:46:33+01:00</updated>
+    <id>http://ramonh.github.io/blog/2014/12/03/scripting-is-awesome</id>
+    <content type="html"><![CDATA[<p>It&rsquo;s not all Bachelor Project for me! One of my contract projects at the moment is to write an OS X app using <a href="http://www.rubymotion.com/">RubyMotion</a>.</p>
+
+<p>One of my goals for this project from the get-go was to make localization really simple. Fortunately, this is really nicely implemented in RubyMotion.</p>
+
+<p>The <a href="https://github.com/rubymotion/sugarcube">SugarCube</a> (MIT license) gem from the RubyMotion community has a localization syntax that allows you to declare a string as localized that is just wonderful. Instead of writing the following:</p>
+
+<figure class='code'><figcaption><span>Objective-C</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">@&quot;String&quot;</span><span class="p">,</span> <span class="s">@&quot;Key&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can just write the following:</p>
+
+<figure class='code'><figcaption><span>Ruby</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="s2">&quot;String&quot;</span><span class="o">.</span><span class="n">_</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It&rsquo;s that simple. It works wonders for interpolating strings, too. This is how it looks in Objective-C:</p>
+
+<figure class='code'><figcaption><span>Objective-C</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="bp">NSInteger</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class='line'><span class="n">NSLocalizedString</span><span class="p">(</span><span class="n">NSStringWithFormat</span><span class="p">(</span><span class="s">@&quot;String with value: %ld&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">),</span> <span class="s">@&quot;Key&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>&hellip;And this is how it is in RubyMotion-Land:</p>
+
+<figure class='code'><figcaption><span>Ruby</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">value</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class='line'><span class="s2">&quot;String </span><span class="si">#{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">_</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Meanwhile, you&rsquo;re probably wondering where we need to place these localized strings, as well as how RubyMotion knows what language they belong to. This is also quite simple. In your project&rsquo;s folder, you need a <em>resources</em> folder. This is where your localization files will go. For example, for English, you&rsquo;ll need a folder called <em>en.lproj</em>, or for Spanish they&rsquo;ll go in <em>es.lproj</em>. More language codes can be found in the <a href="https://developer.apple.com/library/ios/documentation/MacOSX/Conceptual/BPInternational/LanguageandLocaleIDs/LanguageandLocaleIDs.html">official Apple Docs</a>.</p>
+
+<p>Finally, you need to create a file in the localized folder called <em>Localizable.strings</em>. In it, each line will be formatted like the following example:</p>
+
+<p><em>&ldquo;Hello&rdquo; = &ldquo;Hola&rdquo;;</em></p>
+
+<p>This is nice and all, but here&rsquo;s where it got a little irritating for me: I didn&rsquo;t want to go and copy each line for each localizable file. I therefore wrote a script! A rake task, to be precise. What this task does is it looks at the strings in the English localizable file and copies them into those of the other languages, should these not already contain said string:</p>
+
+<figure class='code'><figcaption><span>&#8220;Generate Localizable Files&#8221;</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">desc</span> <span class="s2">&quot;Generate localizable strings&quot;</span>
+</span><span class='line'><span class="n">task</span> <span class="ss">:generate_localizable</span> <span class="k">do</span>
+</span><span class='line'>  <span class="c1"># Go through each English .strings file</span>
+</span><span class='line'>  <span class="no">Dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;resources/en.lproj/*.strings&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">strings_file</span><span class="o">|</span>
+</span><span class='line'>    <span class="c1"># Go through the other localized folders</span>
+</span><span class='line'>    <span class="c1"># except for the English one</span>
+</span><span class='line'>    <span class="no">Dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;resources/*.lproj&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">folder</span><span class="o">|</span>
+</span><span class='line'>      <span class="k">next</span> <span class="k">if</span> <span class="n">folder</span> <span class="o">==</span> <span class="s1">&#39;resources/en.lproj&#39;</span>
+</span><span class='line'>      <span class="c1"># Get each string from the English localized file</span>
+</span><span class='line'>      <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">strings_file</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">line</span><span class="o">|</span>
+</span><span class='line'>        <span class="n">string_regex</span> <span class="o">=</span> <span class="n">line</span><span class="o">[</span><span class="sr">/(&quot;.*&quot;\s*=\s*&quot;.*&quot;;)/</span><span class="p">,</span> <span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>        <span class="k">next</span> <span class="k">unless</span> <span class="n">string_regex</span>
+</span><span class='line'>        <span class="n">string</span> <span class="o">=</span> <span class="n">string_regex</span><span class="o">[</span><span class="sr">/(&quot;.*&quot;)\s*=/</span><span class="p">,</span> <span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>        <span class="nb">puts</span> <span class="n">string</span>
+</span><span class='line'>        <span class="n">localized_strings_file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">strings_file</span><span class="p">))</span>
+</span><span class='line'>        <span class="c1"># Create the new localized strings file if it doesn&#39;t exist,</span>
+</span><span class='line'>        <span class="c1"># and add the string if its non-localized version is not preset</span>
+</span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;touch </span><span class="si">#{</span><span class="n">localized_strings_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">unless</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">localized_strings_file</span><span class="p">)</span><span class="o">.</span><span class="n">read</span> <span class="o">=~</span> <span class="no">Regexp</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">string</span><span class="si">}</span><span class="se">\s</span><span class="s2">*=</span><span class="se">\s</span><span class="s2">*</span><span class="se">\&quot;</span><span class="s2">.*</span><span class="se">\&quot;</span><span class="s2">;&quot;</span><span class="p">)</span>
+</span><span class='line'>          <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">localized_strings_file</span><span class="p">,</span> <span class="s1">&#39;a+&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">string</span><span class="si">}</span><span class="s2"> = </span><span class="si">#{</span><span class="n">string</span><span class="si">}</span><span class="s2">;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So, if I have a <em>&ldquo;Hello&rdquo; = &ldquo;Hello&rdquo;;</em> line in the English localizable file that&rsquo;s not present in say the Spanish one, the above script will copy that line to the bottom of the Spanish localizable file.</p>
+
+<p>Next up, I&rsquo;ll look into a way of looking at the source RubyMotion code and see if I can skip writing the English localizable strings altogether, but this&rsquo;ll do nicely for now!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Coaching at Rails Girls Vienna 2014]]></title>
