@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Localization | Ramon Huidobro]]></title>
+  <title><![CDATA[Category: Localization | Ramón Huidobro]]></title>
   <link href="http://ramonh.github.io/blog/categories/localization/atom.xml" rel="self"/>
   <link href="http://ramonh.github.io/"/>
-  <updated>2014-12-14T18:58:37+01:00</updated>
+  <updated>2014-12-18T13:06:15+01:00</updated>
   <id>http://ramonh.github.io/</id>
   <author>
-    <name><![CDATA[]]></name>
+    <name><![CDATA[Ramón Huidobro]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Internationalization in RubyMotion Projects]]></title>
-    <link href="http://ramonh.github.io/blog/2014/12/03/scripting-is-awesome/"/>
+    <link href="http://ramonh.github.io/blog/2014/12/03/internationalization-in-rubymotion-projects/"/>
     <updated>2014-12-03T12:46:33+01:00</updated>
-    <id>http://ramonh.github.io/blog/2014/12/03/scripting-is-awesome</id>
+    <id>http://ramonh.github.io/blog/2014/12/03/internationalization-in-rubymotion-projects</id>
     <content type="html"><![CDATA[<p>It&rsquo;s not all Bachelor Project for me! One of my contract projects at the moment is to write an OS X app using <a href="http://www.rubymotion.com/">RubyMotion</a>.</p>
 
 <p>One of my goals for this project from the get-go was to make localization really simple. Fortunately, this is really nicely implemented in RubyMotion.</p>

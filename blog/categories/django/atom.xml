@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Django | Ramon Huidobro]]></title>
+  <title><![CDATA[Category: Django | Ramón Huidobro]]></title>
   <link href="http://ramonh.github.io/blog/categories/django/atom.xml" rel="self"/>
   <link href="http://ramonh.github.io/"/>
-  <updated>2014-12-14T18:58:37+01:00</updated>
+  <updated>2014-12-18T13:06:15+01:00</updated>
   <id>http://ramonh.github.io/</id>
   <author>
-    <name><![CDATA[]]></name>
+    <name><![CDATA[Ramón Huidobro]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
