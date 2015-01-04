@@ -165,7 +165,7 @@
 </span><span class='line'>        <span class="c1"># Create the new localized strings file if it doesn&#39;t exist,</span>
 </span><span class='line'>        <span class="c1"># and add the string if its non-localized version is not preset</span>
 </span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;touch </span><span class="si">#{</span><span class="n">localized_strings_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">unless</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">localized_strings_file</span><span class="p">)</span><span class="o">.</span><span class="n">read</span> <span class="o">=~</span> <span class="no">Regexp</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">string</span><span class="si">}</span><span class="se">\s</span><span class="s2">*=</span><span class="se">\s</span><span class="s2">*</span><span class="se">\&quot;</span><span class="s2">.*</span><span class="se">\&quot;</span><span class="s2">;&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">unless</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">localized_strings_file</span><span class="p">)</span><span class="o">.</span><span class="n">read</span> <span class="o">=~</span> <span class="sr">/</span><span class="si">#{</span><span class="no">Regexp</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="si">}</span><span class="sr">\s*=\s*&quot;.*&quot;;/</span>
 </span><span class='line'>          <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">localized_strings_file</span><span class="p">,</span> <span class="s1">&#39;a+&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">string</span><span class="si">}</span><span class="s2"> = </span><span class="si">#{</span><span class="n">string</span><span class="si">}</span><span class="s2">;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="p">}</span>
 </span><span class='line'>        <span class="k">end</span>
 </span><span class='line'>      <span class="k">end</span>
@@ -177,7 +177,7 @@
 
 <p>So, if I have a <em>&ldquo;Hello&rdquo; = &ldquo;Hello&rdquo;;</em> line in the English localizable file that&rsquo;s not present in say the Spanish one, the above script will copy that line to the bottom of the Spanish localizable file.</p>
 
-<p>Next up, I&rsquo;ll look into a way of looking at the source RubyMotion code and see if I can skip writing the English localizable strings altogether, but this&rsquo;ll do nicely for now!</p>
+<p><a href="/blog/2015/01/03/internationalization-in-rubymotion-projects-part-2/">Next up</a>, I&rsquo;ll look into a way of looking at the source RubyMotion code and see if I can skip writing the English localizable strings altogether, but this&rsquo;ll do nicely for now!</p>
 </div>
 
 
@@ -226,6 +226,8 @@
         <a class="basic-alignment left" href="/blog/2014/11/21/coaching-at-rails-girls-vienna/" title="Previous Post: Coaching at Rails Girls Vienna 2014">&laquo; Coaching at Rails Girls Vienna 2014</a>
       
       
+        <a class="basic-alignment right" href="/blog/2015/01/03/internationalization-in-rubymotion-projects-part-2/" title="Next Post: Internationalization in RubyMotion Projects - Part 2">Internationalization in RubyMotion Projects - Part 2 &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -242,7 +244,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Ramón Huidobro -
+  Copyright &copy; 2015 - Ramón Huidobro -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

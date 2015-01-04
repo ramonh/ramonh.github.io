@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rake | Ramón Huidobro]]></title>
   <link href="http://ramonh.github.io/blog/categories/rake/atom.xml" rel="self"/>
   <link href="http://ramonh.github.io/"/>
-  <updated>2014-12-18T13:06:15+01:00</updated>
+  <updated>2015-01-04T21:18:04+01:00</updated>
   <id>http://ramonh.github.io/</id>
   <author>
     <name><![CDATA[Ramón Huidobro]]></name>
@@ -70,7 +70,7 @@ task :generate_localizable do
         # Create the new localized strings file if it doesn't exist,
         # and add the string if its non-localized version is not preset
         system("touch #{localized_strings_file}")
-        unless File.open(localized_strings_file).read =~ Regexp.new("#{string}\s*=\s*\".*\";")
+        unless File.open(localized_strings_file).read =~ /#{Regexp.quote(string)}\s*=\s*".*";/
           File.open(localized_strings_file, 'a+') { |f| f.write("#{string} = #{string};\n") }
         end
       end
@@ -81,7 +81,7 @@ end
 
 <p>So, if I have a <em>&ldquo;Hello&rdquo; = &ldquo;Hello&rdquo;;</em> line in the English localizable file that&rsquo;s not present in say the Spanish one, the above script will copy that line to the bottom of the Spanish localizable file.</p>
 
-<p>Next up, I&rsquo;ll look into a way of looking at the source RubyMotion code and see if I can skip writing the English localizable strings altogether, but this&rsquo;ll do nicely for now!</p>
+<p><a href="/blog/2015/01/03/internationalization-in-rubymotion-projects-part-2/">Next up</a>, I&rsquo;ll look into a way of looking at the source RubyMotion code and see if I can skip writing the English localizable strings altogether, but this&rsquo;ll do nicely for now!</p>
 ]]></content>
   </entry>
   
