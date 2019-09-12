@@ -1,0 +1,14 @@
+{
+  "name": "ramonh.github.io",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ramonh/ramonh.github.io.git",
+  "author": "Ramon Huidobro <hola@ramonh.dev>",
+  "license": "MIT",
+  "scripts": {
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "gh-pages": "^2.1.1"
+  }
+}
