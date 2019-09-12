@@ -6,9 +6,17 @@
   "author": "Ramon Huidobro <hola@ramonh.dev>",
   "license": "MIT",
   "scripts": {
+    "start": "./node_modules/.bin/webpack --watch | bundle exec jekyll serve --livereload --incremental",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "gh-pages": "^2.1.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
+    "webpack": "^4.40.0",
+    "webpack-cli": "^3.3.8"
   }
 }
