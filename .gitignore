@@ -4,3 +4,4 @@ node_modules
 src/assets/*.js
 src/.jekyll-cache
 src/.jekyll-metadata
+dist
